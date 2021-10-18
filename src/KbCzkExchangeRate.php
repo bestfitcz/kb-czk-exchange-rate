@@ -11,10 +11,10 @@ class KbCzkExchangeRate
     protected Client $client;
 
     /** @var string */
-    protected string $endpoint = 'https://maps.googleapis.com/maps/api/geocode/json';
+    protected string $endpoint = 'https://api.kb.cz/openapi/v1/exchange-rates/';
 
     /** @var string */
-    protected string $currency;
+    protected string $currency = 'EUR';
 
 
     public function __construct(Client $client)
@@ -29,7 +29,7 @@ class KbCzkExchangeRate
         return $this;
     }
 
-    public function getCurrencyExchangeRate(string $currency)
+    public function getCurrencyExchangeRate()
     {
         $response = $this->client->request('GET', $this->endpoint . $this->currency);
 
